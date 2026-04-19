@@ -2,7 +2,7 @@
 
 ## Purpose
 
-- Repository-specific guidance for coding agents working in `v3-admin-vite`.
+- Repository-specific guidance for coding agents working in `vue3-emementPlus-admin`.
 - Follow existing project patterns over generic Vue/Vite defaults.
 - Keep changes small, local, and easy to review.
 
