@@ -1,0 +1,17 @@
+# Common
+dist
+node_modules
+.eslintcache
+vite.config.*.timestamp*
+
+# MacOS
+.DS_Store
+
+# Local env files
+*.local
+
+# Logs
+*.log
+
+# Package manager lockfiles not in use
+yarn.lock
