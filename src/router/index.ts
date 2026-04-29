@@ -53,14 +53,14 @@ export const constantRoutes: RouteRecordRaw[] = [
     children: [
       {
         path: "dashboard",
-        component: () => import("@/pages/dashboard/index.vue"),
+        component: () => import("@/pages/analysis/index.vue"),
         name: "Dashboard",
         meta: {
           title: "首页",
           svgIcon: "dashboard",
           affix: true
         }
-      }
+      },
     ]
   },
 ]
@@ -153,21 +153,21 @@ export const dynamicRoutes: RouteRecordRaw[] = [
       }
     ]
   },
-  {
-    path: "/analysis",
-    component: Layouts,
-    children: [
-      {
-        path: "",
-        component: () => import("@/pages/analysis/index.vue"),
-        name: "Analysis",
-        meta: {
-          title: "分析统计",
-          elIcon: "DataAnalysis"
-        }
-      }
-    ]
-  }
+  // {
+  //   path: "/analysis",
+  //   component: Layouts,
+  //   children: [
+  //     {
+  //       path: "",
+  //       component: () => import("@/pages/analysis/index.vue"),
+  //       name: "Analysis",
+  //       meta: {
+  //         title: "分析统计",
+  //         elIcon: "DataAnalysis"
+  //       }
+  //     }
+  //   ]
+  // }
 ]
 
 /** 路由实例 */
