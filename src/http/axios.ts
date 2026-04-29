@@ -37,8 +37,8 @@ function createInstance() {
         return Promise.reject(new Error("非本系统的接口"))
       }
       switch (code) {
-        case 0:
-          // 本系统采用 code === 0 来表示没有业务错误
+        case 200:
+          // 本系统采用 code === 200 来表示没有业务错误
           return apiData
         case 401:
           // Token 过期时

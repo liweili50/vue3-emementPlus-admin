@@ -8,11 +8,14 @@ import SvgComponent from "unplugin-svg-component/vite"
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers"
 import Components from "unplugin-vue-components/vite"
 import { defineConfig, loadEnv } from "vite"
+import { viteMockServe } from "vite-plugin-mock"
 import svgLoader from "vite-svg-loader"
 
 // Configuring Vite: https://cn.vite.dev/config
 export default defineConfig(({ mode }) => {
-  const { VITE_PUBLIC_PATH } = loadEnv(mode, process.cwd(), "") as ImportMetaEnv
+  const env = loadEnv(mode, process.cwd(), "")
+  const { VITE_PUBLIC_PATH } = env as ImportMetaEnv
+  const useMock = env.VITE_USE_MOCK === "true"
   return {
     // 开发或打包构建时用到的公共基础路径
     base: VITE_PUBLIC_PATH,
@@ -36,7 +39,7 @@ export default defineConfig(({ mode }) => {
       open: true,
       // 反向代理
       proxy: {
-        "/api/v1": {
+        "/api/": {
           target: "https://apifoxmock.com/m1/2930465-2145633-default",
           // 是否为 WebSocket
           ws: false,
@@ -101,6 +104,12 @@ export default defineConfig(({ mode }) => {
     // 插件配置
     plugins: [
       vue(),
+      // Mock 接口服务（根据环境变量动态启用）
+      viteMockServe({
+        mockPath: "mock",
+        enable: useMock,
+        logger: true
+      }),
       // 支持将 SVG 文件导入为 Vue 组件
       svgLoader({
         defaultImport: "url",

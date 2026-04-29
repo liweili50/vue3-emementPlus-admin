@@ -63,99 +63,6 @@ export const constantRoutes: RouteRecordRaw[] = [
       }
     ]
   },
-  {
-    path: "/demo",
-    component: Layouts,
-    redirect: "/demo/unocss",
-    name: "Demo",
-    meta: {
-      title: "示例集合",
-      elIcon: "DataBoard"
-    },
-    children: [
-      {
-        path: "unocss",
-        component: () => import("@/pages/demo/unocss/index.vue"),
-        name: "UnoCSS",
-        meta: {
-          title: "UnoCSS"
-        }
-      },
-      {
-        path: "element-plus",
-        component: () => import("@/pages/demo/element-plus/index.vue"),
-        name: "ElementPlus",
-        meta: {
-          title: "Element Plus",
-          keepAlive: true
-        }
-      },
-      {
-        path: "vxe-table",
-        component: () => import("@/pages/demo/vxe-table/index.vue"),
-        name: "VxeTable",
-        meta: {
-          title: "Vxe Table",
-          keepAlive: true
-        }
-      },
-      {
-        path: "level2",
-        component: () => import("@/pages/demo/level2/index.vue"),
-        redirect: "/demo/level2/level3",
-        name: "Level2",
-        meta: {
-          title: "二级路由",
-          alwaysShow: true
-        },
-        children: [
-          {
-            path: "level3",
-            component: () => import("@/pages/demo/level2/level3/index.vue"),
-            name: "Level3",
-            meta: {
-              title: "三级路由",
-              keepAlive: true
-            }
-          }
-        ]
-      },
-      {
-        path: "composable-demo",
-        redirect: "/demo/composable-demo/use-fetch-select",
-        name: "ComposableDemo",
-        meta: {
-          title: "组合式函数"
-        },
-        children: [
-          {
-            path: "use-fetch-select",
-            component: () => import("@/pages/demo/composable-demo/use-fetch-select.vue"),
-            name: "UseFetchSelect",
-            meta: {
-              title: "useFetchSelect"
-            }
-          },
-          {
-            path: "use-fullscreen-loading",
-            component: () => import("@/pages/demo/composable-demo/use-fullscreen-loading.vue"),
-            name: "UseFullscreenLoading",
-            meta: {
-              title: "useFullscreenLoading"
-            }
-          },
-          {
-            path: "use-watermark",
-            component: () => import("@/pages/demo/composable-demo/use-watermark.vue"),
-            name: "UseWatermark",
-            meta: {
-              title: "useWatermark"
-            }
-          }
-        ]
-      }
-    ]
-  }
 ]
 
 /**
@@ -165,36 +72,98 @@ export const constantRoutes: RouteRecordRaw[] = [
  */
 export const dynamicRoutes: RouteRecordRaw[] = [
   {
-    path: "/permission",
+    path: "/system",
     component: Layouts,
-    redirect: "/permission/page-level",
-    name: "Permission",
+    redirect: "/system/user-management",
+    name: "SystemManagement",
     meta: {
-      title: "权限演示",
-      elIcon: "Lock",
-      // 可以在根路由中设置角色
+      title: "系统管理",
+      elIcon: "Setting",
+      roles: ["admin"],
+      alwaysShow: true
+    },
+    children: [
+      {
+        path: "user-management",
+        component: () => import("@/pages/system-management/user-management/index.vue"),
+        name: "UserManagement",
+        meta: {
+          title: "用户管理",
+          elIcon: "User"
+        }
+      },
+      {
+        path: "role-management",
+        component: () => import("@/pages/system-management/role-management/index.vue"),
+        name: "RoleManagement",
+        meta: {
+          title: "角色管理",
+          elIcon: "Avatar"
+        }
+      },
+      {
+        path: "permission-management",
+        component: () => import("@/pages/system-management/permission-management/index.vue"),
+        name: "PermissionManagement",
+        meta: {
+          title: "权限管理",
+          elIcon: "Lock"
+        }
+      }
+    ]
+  },
+  {
+    path: "/business",
+    component: Layouts,
+    redirect: "/business/customer-management",
+    name: "BusinessManagement",
+    meta: {
+      title: "业务管理",
+      elIcon: "Briefcase",
       roles: ["admin", "editor"],
       alwaysShow: true
     },
     children: [
       {
-        path: "page-level",
-        component: () => import("@/pages/demo/permission/page-level.vue"),
-        name: "PermissionPageLevel",
+        path: "customer-management",
+        component: () => import("@/pages/business-management/customer-management/index.vue"),
+        name: "CustomerManagement",
         meta: {
-          title: "页面级",
-          // 或者在子路由中设置角色
-          roles: ["admin"]
+          title: "客户管理",
+          elIcon: "OfficeBuilding"
         }
       },
       {
-        path: "button-level",
-        component: () => import("@/pages/demo/permission/button-level.vue"),
-        name: "PermissionButtonLevel",
+        path: "product-management",
+        component: () => import("@/pages/business-management/product-management/index.vue"),
+        name: "ProductManagement",
         meta: {
-          title: "按钮级",
-          // 如果未设置角色，则表示：该页面不需要权限，但会继承根路由的角色
-          roles: undefined
+          title: "产品管理",
+          elIcon: "Box"
+        }
+      },
+      {
+        path: "order-management",
+        component: () => import("@/pages/business-management/order-management/index.vue"),
+        name: "OrderManagement",
+        meta: {
+          title: "订单管理",
+          elIcon: "Document"
+        }
+      }
+    ]
+  },
+  {
+    path: "/analysis",
+    component: Layouts,
+    children: [
+      {
+        path: "",
+        component: () => import("@/pages/analysis/index.vue"),
+        name: "Analysis",
+        meta: {
+          title: "分析统计",
+          elIcon: "DataAnalysis"
         }
       }
     ]
