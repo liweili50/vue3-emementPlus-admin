@@ -1,3 +1,5 @@
+import type { ApiResponseData } from "types/api"
+
 export interface UserLoginRequestData {
   username: string
   password: string
