@@ -1,12 +1,11 @@
 import type * as Customer from "./type"
 import type { ApiResponseData } from "types/api"
-import { API_PREFIX } from "@/api/utils/config"
 import { request } from "@/http/axios"
 
 /** 获取客户分页列表 */
 export function getCustomerPageApi(params: Customer.CustomerListRequestData) {
   return request<ApiResponseData<Customer.CustomerListResponseData>>({
-    url: `${API_PREFIX}/customer/page`,
+    url: `/api/customer/page`,
     method: "get",
     params
   })
@@ -15,7 +14,7 @@ export function getCustomerPageApi(params: Customer.CustomerListRequestData) {
 /** 获取客户详情 */
 export function getCustomerDetailApi(id: number) {
   return request<ApiResponseData<Customer.CustomerInfo>>({
-    url: `${API_PREFIX}/customer/detail/${id}`,
+    url: `/api/customer/detail/${id}`,
     method: "get"
   })
 }
@@ -23,7 +22,7 @@ export function getCustomerDetailApi(id: number) {
 /** 新增客户 */
 export function addCustomerApi(data: Customer.CustomerAddRequestData) {
   return request({
-    url: `${API_PREFIX}/customer/add`,
+    url: `/api/customer/add`,
     method: "post",
     data
   })
@@ -32,7 +31,7 @@ export function addCustomerApi(data: Customer.CustomerAddRequestData) {
 /** 更新客户 */
 export function updateCustomerApi(data: Customer.CustomerUpdateRequestData) {
   return request({
-    url: `${API_PREFIX}/customer/update`,
+    url: `/api/customer/update`,
     method: "put",
     data
   })
@@ -41,7 +40,7 @@ export function updateCustomerApi(data: Customer.CustomerUpdateRequestData) {
 /** 删除客户 */
 export function deleteCustomerApi(id: number) {
   return request({
-    url: `${API_PREFIX}/customer/delete/${id}`,
+    url: `/api/customer/delete/${id}`,
     method: "delete"
   })
 }

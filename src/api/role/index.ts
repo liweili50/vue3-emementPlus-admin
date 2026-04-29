@@ -1,12 +1,11 @@
 import type * as Role from "./type"
 import type { ApiResponseData } from "types/api"
-import { API_PREFIX } from "@/api/utils/config"
 import { request } from "@/http/axios"
 
 /** 获取角色分页列表 */
 export function getRolePageApi(params: Role.RoleListRequestData) {
   return request<ApiResponseData<Role.RoleListResponseData>>({
-    url: `${API_PREFIX}/role/page`,
+    url: `/api/role/page`,
     method: "get",
     params
   })
@@ -15,7 +14,7 @@ export function getRolePageApi(params: Role.RoleListRequestData) {
 /** 获取角色列表(不分页) */
 export function getRoleListApi() {
   return request<ApiResponseData<Role.RoleSimpleInfo[]>>({
-    url: `${API_PREFIX}/role/list`,
+    url: `/api/role/list`,
     method: "get"
   })
 }
@@ -23,7 +22,7 @@ export function getRoleListApi() {
 /** 新增角色 */
 export function addRoleApi(data: Role.RoleAddRequestData) {
   return request({
-    url: `${API_PREFIX}/role/add`,
+    url: `/api/role/add`,
     method: "post",
     data
   })
@@ -32,7 +31,7 @@ export function addRoleApi(data: Role.RoleAddRequestData) {
 /** 更新角色 */
 export function updateRoleApi(data: Role.RoleUpdateRequestData) {
   return request({
-    url: `${API_PREFIX}/role/update`,
+    url: `/api/role/update`,
     method: "put",
     data
   })
@@ -41,7 +40,7 @@ export function updateRoleApi(data: Role.RoleUpdateRequestData) {
 /** 删除角色 */
 export function deleteRoleApi(id: number) {
   return request({
-    url: `${API_PREFIX}/role/delete/${id}`,
+    url: `/api/role/delete/${id}`,
     method: "delete"
   })
 }
@@ -49,7 +48,7 @@ export function deleteRoleApi(id: number) {
 /** 分配权限 */
 export function assignRolePermissionApi(roleId: number, data: Role.RoleAssignPermissionRequestData) {
   return request({
-    url: `${API_PREFIX}/role/assign/${roleId}`,
+    url: `/api/role/assign/${roleId}`,
     method: "post",
     data
   })

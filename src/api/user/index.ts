@@ -1,12 +1,11 @@
 import type * as User from "./type"
 import type { ApiResponseData } from "types/api"
-import { API_PREFIX } from "@/api/utils/config"
 import { request } from "@/http/axios"
 
 /** 用户登录 */
 export function loginApi(data: User.UserLoginRequestData) {
   return request<ApiResponseData<User.UserLoginResponseData>>({
-    url: `${API_PREFIX}/user/login`,
+    url: `/api/user/login`,
     method: "post",
     data
   })
@@ -15,7 +14,7 @@ export function loginApi(data: User.UserLoginRequestData) {
 /** 用户退出 */
 export function logoutApi() {
   return request({
-    url: `${API_PREFIX}/user/logout`,
+    url: `/api/user/logout`,
     method: "post"
   })
 }
@@ -23,7 +22,7 @@ export function logoutApi() {
 /** 获取用户列表 */
 export function getUserListApi(params: User.UserListRequestData) {
   return request<ApiResponseData<User.UserListResponseData>>({
-    url: `${API_PREFIX}/user/list`,
+    url: `/api/user/list`,
     method: "get",
     params
   })
@@ -32,7 +31,7 @@ export function getUserListApi(params: User.UserListRequestData) {
 /** 获取用户详情 */
 export function getUserDetailApi(id: number) {
   return request<ApiResponseData<User.UserInfo>>({
-    url: `${API_PREFIX}/user/detail/${id}`,
+    url: `/api/user/detail/${id}`,
     method: "get"
   })
 }
@@ -40,7 +39,7 @@ export function getUserDetailApi(id: number) {
 /** 新增用户 */
 export function addUserApi(data: User.UserAddRequestData) {
   return request({
-    url: `${API_PREFIX}/user/add`,
+    url: `/api/user/add`,
     method: "post",
     data
   })
@@ -49,7 +48,7 @@ export function addUserApi(data: User.UserAddRequestData) {
 /** 更新用户 */
 export function updateUserApi(data: User.UserUpdateRequestData) {
   return request({
-    url: `${API_PREFIX}/user/update`,
+    url: `/api/user/update`,
     method: "put",
     data
   })
@@ -58,7 +57,7 @@ export function updateUserApi(data: User.UserUpdateRequestData) {
 /** 删除用户 */
 export function deleteUserApi(id: number) {
   return request({
-    url: `${API_PREFIX}/user/delete/${id}`,
+    url: `/api/user/delete/${id}`,
     method: "delete"
   })
 }

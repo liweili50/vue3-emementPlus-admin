@@ -1,12 +1,11 @@
 import type * as Permission from "./type"
 import type { ApiResponseData } from "types/api"
-import { API_PREFIX } from "@/api/utils/config"
 import { request } from "@/http/axios"
 
 /** 获取权限列表 */
 export function getPermissionListApi() {
   return request<ApiResponseData<Permission.PermissionInfo[]>>({
-    url: `${API_PREFIX}/permission/list`,
+    url: `/api/permission/list`,
     method: "get"
   })
 }
@@ -14,7 +13,7 @@ export function getPermissionListApi() {
 /** 新增权限 */
 export function addPermissionApi(data: Permission.PermissionAddRequestData) {
   return request({
-    url: `${API_PREFIX}/permission/add`,
+    url: `/api/permission/add`,
     method: "post",
     data
   })
@@ -23,7 +22,7 @@ export function addPermissionApi(data: Permission.PermissionAddRequestData) {
 /** 更新权限 */
 export function updatePermissionApi(data: Permission.PermissionUpdateRequestData) {
   return request({
-    url: `${API_PREFIX}/permission/update`,
+    url: `/api/permission/update`,
     method: "put",
     data
   })
@@ -32,7 +31,7 @@ export function updatePermissionApi(data: Permission.PermissionUpdateRequestData
 /** 删除权限 */
 export function deletePermissionApi(id: number) {
   return request({
-    url: `${API_PREFIX}/permission/delete/${id}`,
+    url: `/api/permission/delete/${id}`,
     method: "delete"
   })
 }

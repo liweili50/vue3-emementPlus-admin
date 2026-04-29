@@ -1,12 +1,11 @@
 import type * as Product from "./type"
 import type { ApiResponseData } from "types/api"
-import { API_PREFIX } from "@/api/utils/config"
 import { request } from "@/http/axios"
 
 /** 获取产品分页列表 */
 export function getProductPageApi(params: Product.ProductListRequestData) {
   return request<ApiResponseData<Product.ProductListResponseData>>({
-    url: `${API_PREFIX}/product/page`,
+    url: `/api/product/page`,
     method: "get",
     params
   })
@@ -15,7 +14,7 @@ export function getProductPageApi(params: Product.ProductListRequestData) {
 /** 获取产品列表(不分页) */
 export function getProductListApi() {
   return request<ApiResponseData<Product.ProductSimpleInfo[]>>({
-    url: `${API_PREFIX}/product/list`,
+    url: `/api/product/list`,
     method: "get"
   })
 }
@@ -23,7 +22,7 @@ export function getProductListApi() {
 /** 获取产品详情 */
 export function getProductDetailApi(id: number) {
   return request<ApiResponseData<Product.ProductInfo>>({
-    url: `${API_PREFIX}/product/detail/${id}`,
+    url: `/api/product/detail/${id}`,
     method: "get"
   })
 }
@@ -31,7 +30,7 @@ export function getProductDetailApi(id: number) {
 /** 新增产品 */
 export function addProductApi(data: Product.ProductAddRequestData) {
   return request({
-    url: `${API_PREFIX}/product/add`,
+    url: `/api/product/add`,
     method: "post",
     data
   })
@@ -40,7 +39,7 @@ export function addProductApi(data: Product.ProductAddRequestData) {
 /** 更新产品 */
 export function updateProductApi(data: Product.ProductUpdateRequestData) {
   return request({
-    url: `${API_PREFIX}/product/update`,
+    url: `/api/product/update`,
     method: "put",
     data
   })
@@ -49,7 +48,7 @@ export function updateProductApi(data: Product.ProductUpdateRequestData) {
 /** 删除产品 */
 export function deleteProductApi(id: number) {
   return request({
-    url: `${API_PREFIX}/product/delete/${id}`,
+    url: `/api/product/delete/${id}`,
     method: "delete"
   })
 }
